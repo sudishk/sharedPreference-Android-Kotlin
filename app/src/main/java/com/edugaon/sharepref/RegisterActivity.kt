@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -36,8 +37,9 @@ class RegisterActivity : AppCompatActivity() {
             sharedPreferences.putString("email_key", emailEditText.text.toString())
             sharedPreferences.putString("password_key", passwordEditText.text.toString())
             sharedPreferences.putBoolean("login_status_key", false)
-                .apply()
+                .apply() //saving  name,email,password and login_status in sharePref
 
+            Toast.makeText(this, "Registration successfully", Toast.LENGTH_SHORT).show()
             val  intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()

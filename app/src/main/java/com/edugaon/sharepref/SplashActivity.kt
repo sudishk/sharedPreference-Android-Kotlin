@@ -1,5 +1,6 @@
 package com.edugaon.sharepref
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -19,11 +20,21 @@ class SplashActivity : AppCompatActivity() {
             insets
         }
 
+        val  sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
+        val loginStatus = sharedPreferences.getBoolean("login_status_key", false) // getting login status from sharePref based on key
+
+
         Handler().postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            if (loginStatus){ // checking login
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent) // sending on MainActivity
+            }else{
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent) // sending on LoginActivity
+            }
+
             finish()
 
-        }, 3000)
+        }, 3000 /* timer for splash*/)
     }
 }

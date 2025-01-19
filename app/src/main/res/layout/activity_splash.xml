@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SplashApp"
+        android:text="Register with email and password"
         android:layout_margin="10dp"
         android:textStyle="bold"
         android:textSize="20sp"/>
